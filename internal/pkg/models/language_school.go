@@ -5,7 +5,11 @@ import "gorm.io/gorm"
 type LanguageSchool struct {
 	gorm.Model
 	// basic info
+	Name   string `gorm:"type:varchar(300);index" json:"name"`
+	NameCh string `gorm:"type:varchar(300);index" json:"name_ch"`
+
 	NissID  string `gorm:"type:varchar(100);index" json:"niss_id"` // 日本語教育振興協会 id
+	NissUrl string `gorm:"type:text" json:"niss_url"`
 	Addr    string `gorm:"type:text" json:"addr"`
 	Tel     string `gorm:"type:varchar(300)" json:"tel"`
 	Website string `gorm:"type:varchar(300)" json:"website"`
