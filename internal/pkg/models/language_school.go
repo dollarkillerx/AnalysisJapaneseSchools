@@ -1,6 +1,9 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/gorm"
+	"time"
+)
 
 type LanguageSchool struct {
 	gorm.Model
@@ -8,12 +11,16 @@ type LanguageSchool struct {
 	Name   string `gorm:"type:varchar(300);index" json:"name"`
 	NameCh string `gorm:"type:varchar(300);index" json:"name_ch"`
 
-	NissID  string `gorm:"type:varchar(100);index" json:"niss_id"` // 日本語教育振興協会 id
-	NissUrl string `gorm:"type:text" json:"niss_url"`
-	Addr    string `gorm:"type:text" json:"addr"`
-	Tel     string `gorm:"type:varchar(300)" json:"tel"`
-	Website string `gorm:"type:varchar(300)" json:"website"`
-	Email   string `gorm:"type:varchar(300)" json:"email"`
+	UpDataTime time.Time `json:"up_data_time"`
+
+	NissID         string `gorm:"type:varchar(100);index" json:"niss_id"` // 日本語教育振興協会 id
+	NissUrl        string `gorm:"type:text" json:"niss_url"`
+	Addr           string `gorm:"type:text" json:"addr"`
+	Tel            string `gorm:"type:varchar(300)" json:"tel"`
+	NearestStation string `gorm:"type:text" json:"nearest_station"` // 最近车站
+	Website        string `gorm:"type:varchar(300)" json:"website"`
+	Email          string `gorm:"type:varchar(300)" json:"email"`
+	Founder        string `gorm:"type:varchar(300)" json:"founder"` // 設置者名
 
 	// addr info
 	Province string `gorm:"type:varchar(100);index" json:"province"` // 省
@@ -23,8 +30,9 @@ type LanguageSchool struct {
 	// school info
 	SchoolType           SchoolType `gorm:"type:varchar(100)" json:"school_type"`          // 學校類型: 財團法人/學校法人
 	SchoolMaster         string     `gorm:"type:varchar(200)" json:"school_master"`        // 校長
-	TeachingStartTime    string     `gorm:"type:varchar(200)" json:"teaching_start_time"`  // 教學開始時間
+	TeachingStartTime    time.Time  `gorm:"type:varchar(200)" json:"teaching_start_time"`  // 教學開始時間
 	CertificationPeriod  string     `gorm:"type:varchar(200)" json:"certification_period"` // 认定期间
+	Representative       string     `gorm:"type:varchar(200)" json:"representative"`       // 代表者名
 	NumberOfTeachers     uint16     `json:"number_of_teachers"`                            // 教员人数
 	NumberOfTeachersFull uint16     `json:"number_of_teachers_full"`                       // 教员人数 專職
 	Quota                uint16     `json:"quota"`                                         // 名額
