@@ -79,12 +79,6 @@ func (l *LanguageSchoolUpdate) genL2(keys []string) ([]models.LanguageSchool, er
 		tasks = append(tasks, item...)
 	}
 
-	tasks = []models.LanguageSchool{
-		{
-			NissUrl: "https://www.nisshinkyo.org/search/college.php?lng=1&id=473",
-		},
-	}
-
 	for idx, v := range tasks {
 		code, rdata, err := urllib.Get(v.NissUrl).Byte()
 		if err != nil {
