@@ -40,11 +40,8 @@ type LanguageSchool struct {
 	// 留學人數
 	PeopleInfoStatisticsTime string `gorm:"type:varchar(200)" json:"people_info_statistics_time"` // 留學人數統計時間
 
-	CourseInfoJson         string `gorm:"type:text" json:"course_info_json"`                  // 课程信息  {"認定コース": "", "目的": ...}
-	JLPTInfoJson           string `gorm:"type:text" json:"jlpt_info_json"`                    // JLPT课程信息 {"n1": {"total": 30, "ok": 20} ...}
-	JLPTInfoStatisticsTime string `gorm:"type:varchar(200)" json:"jlpt_info_statistics_time"` // JLPT课程信息統計時間
-	StudyInfoJson          string `gorm:"type:text" json:"study_info_json"`                   // 進學統計時間
-	University             string `gorm:"type:text" json:"university"`                        // 升學大學
+	CourseInfoJson string `gorm:"type:text" json:"course_info_json"` // 课程信息  {"認定コース": "", "目的": ...}
+	University     string `gorm:"type:text" json:"university"`       // 升學大學
 
 	// other
 	GoogleMap string `gorm:"type:text" json:"google_map"`
@@ -79,4 +76,13 @@ type LanguageSchool struct {
 	AustraliaPeople   uint16 `json:"australia_people"`    // 澳大利亚
 	OtherPeople       uint16 `json:"other_people"`        // その他
 	TotalPeople       uint16 `json:"total_people"`        // 合計
+
+	EnterPostgraduate      uint16 `json:"enter_postgraduate"`       // 进学研究生
+	EnterUniversity        uint16 `json:"enter_university"`         // 进学大学
+	EnterJuniorCollege     uint16 `json:"enter_junior_college"`     // 进学短期大学
+	EnterCollegeTechnology uint16 `json:"enter_college_technology"` // 进学高等専門学校
+	EnterVocationalSchool  uint16 `json:"enter_vocational_school"`  // 进学専門学校
+	EnterVariousSchools    uint16 `json:"enter_various_schools"`    // 各种学校
+	EnterOtherSchools      uint16 `json:"enter_other_schools"`      // 其他学校
+
 }

@@ -301,8 +301,6 @@ func AsyncInternal(url string) {
 				}
 			})
 		case 2:
-			//fmt.Println(selection.Text())
-
 			var list [][]string
 			selection.Find("tr").Each(func(i int, selection *goquery.Selection) {
 				var itemList []string
@@ -330,10 +328,42 @@ func AsyncInternal(url string) {
 				log.Println(err)
 			}
 			school.CourseInfoJson = string(marshal)
-		default:
-			os.Exit(0)
+		case 3:
+		case 4:
+			selection.Find("tr").Each(func(i int, selection *goquery.Selection) {
+				switch i {
+				case 1:
+					selection.Find("td").Each(func(i int, selection *goquery.Selection) {
+						numbers := utils.ExtractNumbers(selection.Text())
+						if len(numbers) > 0 {
+							nu := numbers[0]
+							switch i {
+							case 0:
+								school.EnterPostgraduate = uint16(nu)
+							case 1:
+								school.EnterUniversity = uint16(nu)
+							case 2:
+								school.EnterJuniorCollege = uint16(nu)
+							case 3:
+								school.EnterCollegeTechnology = uint16(nu)
+							case 4:
+								school.EnterVocationalSchool = uint16(nu)
+							case 5:
+								school.EnterVariousSchools = uint16(nu)
+							case 6:
+								school.EnterOtherSchools = uint16(nu)
+							}
+						}
+					})
+				case 2:
+					school.University = strings.TrimSpace(selection.Find("td").Text())
+				}
+			})
 		}
 	})
+
+	school.GoogleMap = reader.Find("iframe").AttrOr("src", "")
+
 }
 
 func TestQuery2(t *testing.T) {
