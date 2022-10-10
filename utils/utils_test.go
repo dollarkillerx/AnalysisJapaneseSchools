@@ -14,3 +14,8 @@ func TestP2(t *testing.T) {
 	px := "31 名（うち専任：4 名）"
 	fmt.Println(ExtractNumbers(px))
 }
+
+func TestP3(t *testing.T) {
+	px := "中国\n\t\t16"
+	fmt.Println(ExtractNumbers(px))
+}

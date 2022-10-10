@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"fmt"
 	"strconv"
+	"strings"
 )
 
 // WhitespaceOptimization 去除多余空格
@@ -27,6 +27,8 @@ func WhitespaceOptimization(str string) string {
 
 // ExtractNumbers 提取数字
 func ExtractNumbers(str string) []int {
+	str = strings.TrimSpace(str)
+
 	var result []int
 
 	var preIsNumber bool
@@ -42,7 +44,7 @@ func ExtractNumbers(str string) []int {
 		} else {
 			preIsNumber = false
 		}
-		fmt.Println(ic, "  ", preIsNumber)
+		//fmt.Println(ic, "  ", preIsNumber)
 
 		if !preIsNumber {
 			if ntr != "" {
@@ -53,7 +55,13 @@ func ExtractNumbers(str string) []int {
 				ntr = ""
 			}
 		}
+	}
 
+	if ntr != "" {
+		atoi, err := strconv.Atoi(strings.TrimSpace(ntr))
+		if err == nil {
+			result = append(result, atoi)
+		}
 	}
 
 	return result

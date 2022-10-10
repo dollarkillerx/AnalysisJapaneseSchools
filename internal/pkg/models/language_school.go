@@ -28,20 +28,17 @@ type LanguageSchool struct {
 	Area     string `gorm:"type:varchar(100);index" json:"area"`     // 區
 
 	// school info
-	SchoolType           SchoolType `gorm:"type:varchar(100)" json:"school_type"`          // 學校類型: 財團法人/學校法人
-	SchoolMaster         string     `gorm:"type:varchar(200)" json:"school_master"`        // 校長
-	TeachingStartTime    time.Time  `gorm:"type:varchar(200)" json:"teaching_start_time"`  // 教學開始時間
-	CertificationPeriod  string     `gorm:"type:varchar(200)" json:"certification_period"` // 认定期间
-	Representative       string     `gorm:"type:varchar(200)" json:"representative"`       // 代表者名
-	NumberOfTeachers     uint16     `json:"number_of_teachers"`                            // 教员人数
-	NumberOfTeachersFull uint16     `json:"number_of_teachers_full"`                       // 教员人数 專職
-	Quota                uint16     `json:"quota"`                                         // 名額
+	SchoolType               SchoolType `gorm:"type:varchar(100)" json:"school_type"`                // 學校類型: 財團法人/學校法人
+	SchoolMaster             string     `gorm:"type:varchar(200)" json:"school_master"`              // 校長
+	TeachingStartTime        time.Time  `gorm:"type:varchar(200)" json:"teaching_start_time"`        // 教學開始時間
+	CertificationPeriodStart time.Time  `gorm:"type:varchar(200)" json:"certification_period_start"` // 认定期间
+	Representative           string     `gorm:"type:varchar(200)" json:"representative"`             // 代表者名
+	NumberOfTeachers         uint16     `json:"number_of_teachers"`                                  // 教员人数
+	NumberOfTeachersFull     uint16     `json:"number_of_teachers_full"`                             // 教员人数 專職
+	Quota                    string     `gorm:"type:varchar(200)" json:"quota"`                      // 名額
 
 	// 留學人數
 	PeopleInfoStatisticsTime string `gorm:"type:varchar(200)" json:"people_info_statistics_time"` // 留學人數統計時間
-	TotalPeople              uint16 `json:"total_people"`                                         // 縂人數
-	ChinesePeople            uint16 `json:"chinese_people"`                                       // 中國留學生人數
-	OtherPeopleJson          string `gorm:"type:text" json:"other_people_json"`                   // people json  {"us": 100, "ru": 20, "hk": 8 ...}
 
 	CourseInfoJson         string `gorm:"type:text" json:"course_info_json"`                  // 课程信息  {"認定コース": "", "目的": ...}
 	JLPTInfoJson           string `gorm:"type:text" json:"jlpt_info_json"`                    // JLPT课程信息 {"n1": {"total": 30, "ok": 20} ...}
@@ -51,4 +48,35 @@ type LanguageSchool struct {
 
 	// other
 	GoogleMap string `gorm:"type:text" json:"google_map"`
+
+	ChinaPeople       uint16 `json:"china_people"`        // 中国
+	KoreaPeople       uint16 `json:"korea_people"`        // 韓国
+	TaiwanPeople      uint16 `json:"taiwan_people"`       // 台湾
+	VietnamPeople     uint16 `json:"vietnam_people"`      // 越南
+	NepalPeople       uint16 `json:"nepal_people"`        // 尼泊尔
+	ThailandPeople    uint16 `json:"thailand_people"`     // 泰国
+	MyanmarPeople     uint16 `json:"myanmar_people"`      //  缅甸
+	MongoliaPeople    uint16 `json:"mongolia_people"`     // 蒙古
+	IndonesiaPeople   uint16 `json:"indonesia_people"`    // 印度尼西亚
+	SriLankaPeople    uint16 `json:"sri_lanka_people"`    // 斯里兰卡
+	SwedenPeople      uint16 `json:"sweden_people"`       // 瑞典
+	MalaysiaPeople    uint16 `json:"malaysia_people"`     // 马来西亚
+	AmericaPeople     uint16 `json:"america_people"`      // 美国
+	IndiaPeople       uint16 `json:"india_people"`        // 印度
+	FrancePeople      uint16 `json:"france_people"`       // 法国
+	RussiaPeople      uint16 `json:"russia_people"`       // 俄罗斯
+	PhilippinesPeople uint16 `json:"philippines_people"`  // 菲律宾
+	SaudiArabiaPeople uint16 `json:"saudi_arabia_people"` // 沙特阿拉伯
+	ItalyPeople       uint16 `json:"italy_people"`        // 意大利
+	SpainPeople       uint16 `json:"spain_people"`        // 西班牙
+	EnglandPeople     uint16 `json:"england_people"`      // 英国
+	CanadaPeople      uint16 `json:"canada_people"`       // 加拿大
+	BangladeshPeople  uint16 `json:"bangladesh_people"`   // 孟加拉国
+	CambodiaPeople    uint16 `json:"cambodia_people"`     // 柬埔寨
+	SingaporePeople   uint16 `json:"singapore_people"`    // 新加坡
+	SwitzerlandPeople uint16 `json:"switzerland_people"`  // 瑞士
+	GermanyPeople     uint16 `json:"germany_people"`      // 德国
+	AustraliaPeople   uint16 `json:"australia_people"`    // 澳大利亚
+	OtherPeople       uint16 `json:"other_people"`        // その他
+	TotalPeople       uint16 `json:"total_people"`        // 合計
 }
