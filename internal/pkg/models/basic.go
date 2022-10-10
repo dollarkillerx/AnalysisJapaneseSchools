@@ -1,9 +1,20 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/gorm"
+
+	"time"
+)
+
+type BaseModel struct {
+	ID        string `gorm:"primarykey"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt gorm.DeletedAt `gorm:"index"`
+}
 
 type AdministrativeArea struct {
-	gorm.Model
+	BaseModel
 	Name   string `gorm:"type:varchar(300)" json:"name"`
 	Level  int    `json:"level"`
 	Father string `gorm:"type:varchar(300);index" json:"father"`

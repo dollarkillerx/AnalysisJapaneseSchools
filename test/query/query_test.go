@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/dollarkillerx/analysis_japanese_schools/internal/pkg/models"
-	"github.com/dollarkillerx/analysis_japanese_schools/utils"
 	"log"
 	"os"
 	"strings"
@@ -13,6 +11,8 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/dollarkillerx/analysis_japanese_schools/internal/pkg/models"
+	"github.com/dollarkillerx/analysis_japanese_schools/utils"
 	"github.com/dollarkillerx/urllib"
 )
 
@@ -381,4 +381,12 @@ func TestQuery2(t *testing.T) {
 		text := selection.Find("a").AttrOr("href", "")
 		fmt.Println(text)
 	})
+}
+
+func TestPbx(t *testing.T) {
+	px := "area.php?lng=3&area=岩手#terms"
+	split := strings.Split(px, "=")
+	fmt.Println(split)
+	city := strings.ReplaceAll(split[2], "#terms", "")
+	fmt.Println(city)
 }

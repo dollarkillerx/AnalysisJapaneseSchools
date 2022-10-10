@@ -1,12 +1,11 @@
 package models
 
 import (
-	"gorm.io/gorm"
 	"time"
 )
 
 type LanguageSchool struct {
-	gorm.Model
+	BaseModel
 	// basic info
 	Name   string `gorm:"type:varchar(300);index" json:"name"`
 	NameCh string `gorm:"type:varchar(300);index" json:"name_ch"`
